@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import type { Cafe } from '@/types/cafe';
 import FavoriteButton from '@/components/commons/FavoriteButton';
-import { useFavorite } from '@/hooks/useFavorite';
+import useFavorite from '@/hooks/useFavorite';
 
 interface CafeCardProps {
   cafe: Cafe;

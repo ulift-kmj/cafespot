@@ -1,7 +1,7 @@
 import { FaHeart } from 'react-icons/fa';
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import FavoriteCafeList from './FavoriteCafeList';
-import { useFavorite } from '@/hooks/useFavorite';
+import useFavorite from '@/hooks/useFavorite';
 
 interface FavoriteSidebarProps {
   isOpen: boolean;

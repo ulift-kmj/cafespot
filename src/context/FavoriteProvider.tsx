@@ -1,12 +1,11 @@
 import type { Cafe } from '@/types/cafe';
 import { FavoriteContext } from '@/context/FavoriteContext';
-import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 
 export default function FavoriteProvider({
   children,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
   const [favorites, setFavorites] = useState<Cafe[]>(() => {
     const stored = localStorage.getItem('favorites');

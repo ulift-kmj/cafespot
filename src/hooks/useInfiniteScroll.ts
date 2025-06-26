@@ -6,7 +6,7 @@ interface UseInfiniteScrollProps {
   fetchNextPage: () => void;
 }
 
-export const useInfiniteScroll = ({
+const useInfiniteScroll = ({
   hasNextPage,
   isFetchingNextPage,
   fetchNextPage,
@@ -39,3 +39,5 @@ export const useInfiniteScroll = ({
 
   return { loadMoreRef };
 };
+
+export default useInfiniteScroll;
