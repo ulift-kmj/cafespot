@@ -41,6 +41,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-warning: var(--warning);
   --color-darkBrown: var(--darkBrown);
+  --color-beigeBrown: var(--beigeBrown);
   --shadow-custom: 0 4px 60px rgba(4, 6, 15, 0.05);
 }
 
@@ -58,6 +59,7 @@
   --secondary-foreground: #b37e2e;
   --warning: #f5dab3;
   --darkBrown: #58473b;
+  --beigeBrown: #d1b282;
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
