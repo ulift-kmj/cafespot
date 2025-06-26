@@ -5,11 +5,16 @@ import type { CafeResponse } from '@/types/cafe';
 import EmptyState from '@/components/CafeList/EmptyState';
 import ErrorMessage from '@/components/commons/ErrorMessage';
 import LoadingMore from '@/components/CafeList/LoadingMore';
-import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
+import useInfiniteScroll from '@/hooks/useInfiniteScroll';
+import { useSearchFilterStore } from '@/stores/useSearchFilterStore';
+import useDebounce from '@/hooks/useDebounce';
 
 export default function CafeList() {
+  const { searchQuery, selectedSummary } = useSearchFilterStore();
+  const debouncedSearchQuery = useDebounce(searchQuery, 500);
+
   const { data, status, hasNextPage, isFetchingNextPage, fetchNextPage } =
-    useCafeList(10);
+    useCafeList(10, debouncedSearchQuery, selectedSummary);
 
   const { loadMoreRef } = useInfiniteScroll({
     hasNextPage,
