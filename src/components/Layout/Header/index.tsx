@@ -43,7 +43,7 @@ export default function Header() {
               open={isFilterModalOpen}
               onOpenChange={handleFilterModalOpen}
             >
-              <PopoverTrigger>
+              <PopoverTrigger asChild>
                 <FilterButton />
               </PopoverTrigger>
               <PopoverContent className="w-auto p-4" align="center">
