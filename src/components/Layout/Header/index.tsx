@@ -10,10 +10,13 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import FilterModal from './FilterModal';
+import { Link } from 'react-router';
+import { useSearchFilterStore } from '@/stores/useSearchFilterStore';
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const { resetFilters } = useSearchFilterStore();
 
   const handleSidebarOpen = () => setIsSidebarOpen(true);
   const handleSidebarClose = () => setIsSidebarOpen(false);
@@ -25,11 +28,13 @@ export default function Header() {
     <>
       <HeaderContainer>
         <header className="flex items-center justify-between px-6 py-4">
-          <img
-            src="/logo.png"
-            alt="Cafe Spot Logo"
-            className="w-60 h-30 -ml-12"
-          />
+          <Link to="/" onClick={resetFilters}>
+            <img
+              src="/logo.png"
+              alt="Cafe Spot Logo"
+              className="w-60 h-30 -ml-12"
+            />
+          </Link>
 
           <div className="relative hidden md:flex items-center gap-2 mx-4 flex-1 justify-center">
             <SearchBar />
