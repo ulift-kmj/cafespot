@@ -2,14 +2,24 @@ import HeaderContainer from '@/components/Layout/Header/HeaderContainer';
 import SearchBar from '@/components/Layout/Header/SearchBar';
 import SidebarOpenButton from '@/components/Layout/Header/SidebarOpenButton';
 import { useState } from 'react';
-import { PiSlidersHorizontal } from 'react-icons/pi';
 import FavoriteSidebar from '@/components/commons/FavoriteSidebar';
+import FilterButton from '@/components/Layout/Header/FilterButton';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import FilterModal from './FilterModal';
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
   const handleSidebarOpen = () => setIsSidebarOpen(true);
   const handleSidebarClose = () => setIsSidebarOpen(false);
+
+  const handleFilterModalOpen = () => setIsFilterModalOpen(true);
+  const handleFilterModalClose = () => setIsFilterModalOpen(false);
 
   return (
     <>
@@ -24,10 +34,17 @@ export default function Header() {
           <div className="relative hidden md:flex items-center gap-2 mx-4 flex-1 justify-center">
             <SearchBar />
 
-            <button className="flex items-center gap-1 px-4 py-2 border border-primary text-primary rounded-full cursor-pointer whitespace-nowrap">
-              필터
-              <PiSlidersHorizontal className="w-5 h-5" />
-            </button>
+            <Popover
+              open={isFilterModalOpen}
+              onOpenChange={handleFilterModalOpen}
+            >
+              <PopoverTrigger>
+                <FilterButton />
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-4" align="center">
+                <FilterModal onClose={handleFilterModalClose} />
+              </PopoverContent>
+            </Popover>
           </div>
 
           <SidebarOpenButton onOpen={handleSidebarOpen} />
