@@ -59,6 +59,34 @@ const fetchCafeList = async ({
   };
 };
 
+const fetchCafeById = async (id: number): Promise<Cafe> => {
+  const { data, error } = await supabase
+    .from('cafes')
+    .select(
+      `
+      *,
+      photos (
+        url
+      ),
+      summaries!inner (
+        summary_type,
+        is_available
+      ),
+      facilities (
+        facility_type,
+        is_available
+      )
+    `
+    )
+    .eq('id', id)
+    .single();
+
+  if (error) throw error;
+
+  return data;
+};
+
 export const cafeApi = {
   fetchCafeList,
+  fetchCafeById,
 };

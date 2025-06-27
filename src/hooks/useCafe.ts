@@ -1,5 +1,8 @@
 import { cafeApi } from '@/api/cafeApi';
-import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
+import {
+  useSuspenseQuery,
+  useSuspenseInfiniteQuery,
+} from '@tanstack/react-query';
 
 const CAFE_QUERY_KEY = {
   list: (query?: string, summary?: string) =>
@@ -18,5 +21,12 @@ export const useCafeList = (
       cafeApi.fetchCafeList({ page: pageParam, pageSize, query, summary }),
     getNextPageParam: (lastPage) => lastPage.nextPage,
     initialPageParam: 0,
+  });
+};
+
+export const useCafeDetail = (id: number) => {
+  return useSuspenseQuery({
+    queryKey: CAFE_QUERY_KEY.detail(id),
+    queryFn: () => cafeApi.fetchCafeById(id),
   });
 };

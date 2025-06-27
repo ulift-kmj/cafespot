@@ -1,5 +1,5 @@
-import Layout from '@/components/Layout';
+import CafeList from '@/components/CafeList';
 
 export default function App() {
-  return <Layout />;
+  return <CafeList />;
 }
