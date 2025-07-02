@@ -1,5 +1,5 @@
-import type { Cafe } from '@/types/cafe';
 import supabase from '@/lib/supabase';
+import type { Cafe, CafeResponse } from '@/types/cafe';
 
 const fetchCafeList = async ({
   page,
@@ -11,7 +11,7 @@ const fetchCafeList = async ({
   pageSize: number;
   query?: string;
   summary?: string;
-}): Promise<{ data: Cafe[]; nextPage: number | null }> => {
+}): Promise<CafeResponse> => {
   const from = page * pageSize;
   const to = from + pageSize - 1;
 
