@@ -2,11 +2,16 @@ import { summaryTranslations } from '@/constants/summary';
 import { useSearchFilterStore } from '@/stores/useSearchFilterStore';
 import { PiSlidersHorizontal } from 'react-icons/pi';
 
-export default function FilterButton() {
+export default function FilterButton(
+  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+) {
   const { selectedSummary } = useSearchFilterStore();
 
   return (
-    <button className="flex items-center gap-1 px-4 py-2 border border-primary text-primary rounded-full cursor-pointer whitespace-nowrap">
+    <button
+      className="flex items-center gap-1 px-4 py-2 border border-primary text-primary rounded-full cursor-pointer whitespace-nowrap"
+      {...props}
+    >
       {selectedSummary
         ? summaryTranslations[
             selectedSummary as keyof typeof summaryTranslations

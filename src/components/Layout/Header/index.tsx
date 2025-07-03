@@ -1,17 +1,17 @@
+import FavoriteSidebar from '@/components/commons/FavoriteSidebar';
+import FilterButton from '@/components/Layout/Header/FilterButton';
 import HeaderContainer from '@/components/Layout/Header/HeaderContainer';
 import SearchBar from '@/components/Layout/Header/SearchBar';
 import SidebarOpenButton from '@/components/Layout/Header/SidebarOpenButton';
-import { useState } from 'react';
-import FavoriteSidebar from '@/components/commons/FavoriteSidebar';
-import FilterButton from '@/components/Layout/Header/FilterButton';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import FilterModal from './FilterModal';
-import { Link } from 'react-router';
 import { useSearchFilterStore } from '@/stores/useSearchFilterStore';
+import { useState } from 'react';
+import { Link } from 'react-router';
+import FilterModal from './FilterModal';
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
